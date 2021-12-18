@@ -26,7 +26,6 @@
 <br/>
 
 ## 👁‍🗨 Why choose WBMS over others?
-<br/>
 
 - Scan QR code only once, It creates and uses separate user data for chrome to keep you logged in.
 
