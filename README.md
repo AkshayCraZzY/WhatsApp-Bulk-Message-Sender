@@ -75,8 +75,8 @@ scriptdir='C:\\Users\\aksha\\Documents\\WBMS\\'
 For example : ```scriptdir='C:\\coding\\WBMS\\'```
 
 # ⚡ Usage :
-- In ```msg.txt``` and add the message you wish to send.
-- In ```num.txt``` and 10 digit phone numbers line wise (Don't include country code)
+- In ```msg.txt``` add the message you wish to send.
+- In ```num.txt``` add 10 digit phone numbers line wise (Don't include country code)
 For Example : 
 ```
 9876543210
