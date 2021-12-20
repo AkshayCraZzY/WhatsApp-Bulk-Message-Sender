@@ -93,7 +93,7 @@ python main.py
 
 All important messages will be shown on the console window.
 
-# 📸 Screenshots / Working:
+# 📸 Screenshots / Working with Examle:
 * <h3 align="left">Contents of num.txt :</h3>
   - 1st number is a 8 digit number (Invalid) <br/>
   - 2nd number is a (Valid) number<br/>
