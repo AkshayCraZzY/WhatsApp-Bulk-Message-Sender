@@ -1,5 +1,5 @@
 <p align="center">
- <img width="300px" src="https://i.imgur.com/555Zl4p.png" align="center" alt="MargAuto" />
+ <img width="250px" src="https://i.imgur.com/555Zl4p.png" align="center" alt="MargAuto" />
  <h3 align="center"><img src="https://c.tenor.com/3MtdCRIPZUMAAAAi/whatsapp.gif" width="20px"> WhatsApp Bulk Message Sender - WBMS</h3>
 </p>
 <h3 align="center">WBMS automates sending of message to multiple numbers via WhatsApp Web. <br/> </h3>
@@ -79,7 +79,7 @@ For example : ```scriptdir='C:\\coding\\WBMS\\'```
 
 # ⚡ Usage :
 - In ```msg.txt``` add the message you wish to send.
-- In ```num.txt``` add 10 digit phone numbers line wise (Don't include +91)
+- In ```num.txt``` add 10 digit phone numbers line wise (Don't include country code)
 For Example : 
 ```
 9876543210
@@ -89,7 +89,7 @@ Run main.py
 ```
 python main.py
 ```
-*At first run you will get whatsapp QR code Login window. After logging in succesfully restart the script. It should now be already logged in.*<br/>
+*At first run you will get whatsapp QR code Login window. After logging in succesfully restart the script. It should now be already loged in.*<br/>
 
 All important messages will be shown on the console window.
 
