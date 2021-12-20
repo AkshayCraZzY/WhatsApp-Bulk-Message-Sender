@@ -1,3 +1,1 @@
-34242342
-9075555556
-3242342342
+Add 10 digit phone numbers line wise (Don't include country code)
