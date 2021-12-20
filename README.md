@@ -1,6 +1,6 @@
 <p align="center">
- <a href="https://github.com/AkshayCraZzY/WhatsApp-Bulk-Message-Sender"><img width="250px" src="https://i.imgur.com/555Zl4p.png" align="center" alt="MargAuto" />
- <h3 align="center"><img src="https://c.tenor.com/3MtdCRIPZUMAAAAi/whatsapp.gif" width="20px"></a> WhatsApp Bulk Message Sender - WBMS</h3>
+ <img width="250px" src="https://i.imgur.com/555Zl4p.png" align="center" alt="MargAuto" /></a>
+ <h3 align="center"><a href="https://github.com/AkshayCraZzY/WhatsApp-Bulk-Message-Sender"><img src="https://c.tenor.com/3MtdCRIPZUMAAAAi/whatsapp.gif" width="20px"></a> WhatsApp Bulk Message Sender - WBMS</h3>
 </p>
 <h3 align="center">WBMS automates sending of message to multiple numbers via WhatsApp Web. <br/> </h3>
 <br/>
