@@ -1,4 +1,7 @@
-<h1 align="center">  <img src="https://c.tenor.com/3MtdCRIPZUMAAAAi/whatsapp.gif" width="35px">  WhatsApp Bulk Message Sender - WBMS</h1>
+<p align="center">
+ <img width="300px" src="https://i.imgur.com/555Zl4p.png" align="center" alt="MargAuto" />
+ <h3 align="center"><img src="https://c.tenor.com/3MtdCRIPZUMAAAAi/whatsapp.gif" width="20px"> WhatsApp Bulk Message Sender - WBMS</h3>
+</p>
 <h3 align="center">WBMS automates sending of message to multiple numbers via WhatsApp Web. <br/> </h3>
 <br/>
 <p align="center">
