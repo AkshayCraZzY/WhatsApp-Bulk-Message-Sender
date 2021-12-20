@@ -79,7 +79,7 @@ For example : ```scriptdir='C:\\coding\\WBMS\\'```
 
 # ⚡ Usage :
 - In ```msg.txt``` add the message you wish to send.
-- In ```num.txt``` add 10 digit phone numbers line wise (Don't include country code)
+- In ```num.txt``` add 10 digit phone numbers line wise (Don't include +91)
 For Example : 
 ```
 9876543210
