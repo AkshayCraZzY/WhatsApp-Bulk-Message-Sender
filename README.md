@@ -95,9 +95,9 @@ All important messages will be shown on the console window.
 
 # 📸 Screenshots / Working with Example:
 * <h3 align="left">Contents of num.txt :</h3>
-  - 1st number is a 8 digit number (Invalid) <br/>
-  - 2nd number is a (Valid) number<br/>
-  - 3rd number is not on whatsapp (Invalid)
+  - 1st number is a 8 digit number ***(Invalid)*** <br/>
+  - 2nd number is a ***(Valid)*** number<br/>
+  - 3rd number is not on whatsapp ***(Invalid)***
 
 <p align="center"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img width="70%" height="auto" src="https://raw.githubusercontent.com/AkshayCraZzY/WhatsApp-Bulk-Message-Sender/main/screenshots/nums.JPG" height="175px"/></a></p>
 
