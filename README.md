@@ -89,7 +89,7 @@ Run main.py
 ```
 python main.py
 ```
-*At first run you will get whatsapp QR code Login window. After logging in succesfully restart the script. It should now be already loged in.*<br/>
+*At first run you will get whatsapp QR code Login window. After logging in succesfully restart the script. It should now be already logged in.*<br/>
 
 All important messages will be shown on the console window.
 
