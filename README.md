@@ -70,7 +70,7 @@ chromedriver.exe -v
 ```
 ## Changes in the Code
 In a new folder, place ```main.py``` and create ```num.txt```, ```msg.txt``` <br/>
-Find this line and replace path of your newly created folder.<br/>
+Find this line and replace with path of your newly created folder.<br/>
 ```python
 scriptdir='C:\\Users\\aksha\\Documents\\WBMS\\'
 ```
