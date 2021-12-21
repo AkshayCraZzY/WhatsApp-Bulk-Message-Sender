@@ -16,6 +16,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 import urllib.parse
 warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+cmd = 'mode 60,28'
+os.system(cmd)
+
+
 start = time.time()
 #scriptdir="M:\\WBMS\\"
 link1="https://web.whatsapp.com/send?phone=91"
@@ -30,15 +35,39 @@ options.add_argument('log-level=3')
 options.add_argument('disable-gpu')
 options.add_argument('disable-infobars')
 options.add_argument('disable-extensions')
-options.add_argument('disable-dev-shm-usage')
+#options.add_argument('disable-dev-shm-usage')
 #options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36")
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-msg_path=os.path.join(sys.path[0])+"\\PUT EVERYTHING HERE\\msg.txt"
-num_path=os.path.join(sys.path[0])+"\\PUT EVERYTHING HERE\\num.txt"
+dir_path=os.path.join(sys.path[0])+"\\PUT EVERYTHING HERE\\"
+msg_path=dir_path+"msg.txt"
+num_path=dir_path+"num.txt"
 log_path=os.path.join(sys.path[0])+"\\failed.log"
-img_path=os.path.join(sys.path[0])+"\\PUT EVERYTHING HERE\\Images"
+img_path=dir_path+"Images"
 clear()
+
+isExist = os.path.exists(dir_path)
+if not isExist:
+    os.makedirs(dir_path)
+    print("PLEASE PUT DATA IN '"'PUT EVERYTHING HERE'"' FOLDER")
+    print('Exiting')
+    cmd = 'color 0c'  
+    os.system(cmd)  
+    file = open(msg_path,'a+')
+    file.close()
+    file = open(num_path,'a+')
+    file.close()
+    isExist = os.path.exists(img_path)
+    if not isExist:
+        os.makedirs(img_path)
+    time.sleep(10)
+    sys.exit()
+else:
+    cmd = 'color 0a'  
+    os.system(cmd)  
+    print('*')
+
+
 print("\n - - - - - - - - - - - - -STARTING - - - - - - - - - - - - -")
 print(" - - - -Reading Numbers, Message and Images to send - - - - ")
 
@@ -59,11 +88,17 @@ send_msg=urllib.parse.quote_plus(msg)
 #send_msg = msg.replace('\n', '%0A').replace('\r', '%0A')
 
 if os.stat(num_path).st_size == 0 or os.stat(msg_path).st_size == 0:
+    cmd = 'color 0c'  
+    os.system(cmd) 
     print('\n - - - - - -num.txt or msg.txt is empty, Exiting - - - - - -')
+    time.sleep(10)
     sys.exit()
 
 if len(img) > 3:
+    cmd = 'color 0c'  
+    os.system(cmd) 
     print('\n - - - - - - Maximum 3 images allowed, Exiting - - - - - - -')
+    time.sleep(10)
     sys.exit()
 elif len(img) == 0:
     print('\n - - - - - - - - - - -No images found - - - - - - - - - - - ')
@@ -82,11 +117,11 @@ print('\n - - - - - - '+str(lines)+' numbers found in num.txt, Starting- - - - -
 print("\n - - - - - - - - - - - -Your Message - - - - - - - - - - - -")
 print('"'+msg+'"')
 print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
-'''
+
 f = open(log_path, "a")
-f.write('\n - - - - - - - Edited on '+datetime.fromtimestamp(datetime.timestamp(datetime.now())).strftime("%d %B %I:%M %p")+' - - - - - - - \n')
+f.write('\nEdited on '+datetime.fromtimestamp(datetime.timestamp(datetime.now())).strftime("%d %B %I:%M %p")+'\n')
 f.close()
-'''
+
 
 def send():
     count=0
@@ -102,18 +137,27 @@ def send():
             f.write('\n'+tosend+' - '+str(len(tosend))+' digit number\n')
             f.close()
             fail=fail+1
+            cmd = 'color 0c'  
+            os.system(cmd) 
             print('\n - - Number '+tosend+' is not a 10 digit number, skipping - - ')
+            cmd = 'color 0a'  
+            os.system(cmd) 
             linkk='about:blank'
             continue
         else:
             linkk=link1+tosend+link2+send_msg#+'%F0%9F%98%80'
         w.get(linkk)
+        time.sleep(2)
         try:
             w.find_element_by_class_name("_2UwZ_")#.click()
         except NoSuchElementException:
             print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
         else:
+            cmd = 'color 0c'  
+            os.system(cmd) 
             print(" - - -RE-LOGIN NEEDED, Scan QR code and restart script - - -")
+            cmd = 'color 0a'  
+            os.system(cmd) 
         #print(" - - - - - - - - - -WhatsApp Web loaded - - - - - - - - - - ")
         search_xpath = '//div[@contenteditable="true"][@data-tab="3"]'
         WebDriverWait(w, 30).until(EC.presence_of_element_located((By.XPATH, search_xpath)))
@@ -129,7 +173,7 @@ def send():
            # msg_box.send_keys(Keys.SHIFT, Keys.INSERT)
             msg_box.send_keys(Keys.ENTER)
             sent = sent + 1
-            w.get_screenshot_as_file(os.path.join(sys.path[0])+"\\ss\\"+tosend+"_msg.png")
+          #  w.get_screenshot_as_file(os.path.join(sys.path[0])+"\\ss\\"+tosend+"_msg.png")
             #print('\n - - - - - ['+str(sent)+'] - - - - Message sent to '+tosend+' - - - - - ')
             print('\n - - - - - - - - - Message sent to '+tosend+' - - - - - ['+str(sent)+']')
             for imgs in img:
@@ -157,8 +201,8 @@ def send():
                 send_btn = WebDriverWait(w, 2000).until(EC.presence_of_element_located((By.XPATH, send_xpath)))
                 send_btn.click()
                 print(' - - - - - - - - - Image sent '+imgs+' - - - - - - - - - -')
-                if imgs == img[-1]:
-                    w.get_screenshot_as_file(os.path.join(sys.path[0])+"\\ss\\"+tosend+"_img.png")
+               # if imgs == img[-1]:
+                  #  w.get_screenshot_as_file(os.path.join(sys.path[0])+"\\ss\\"+tosend+"_img.png")
                 #time.sleep(2)
 
             w.execute_script("window.close();")
@@ -169,14 +213,20 @@ def send():
             f.write('\n'+tosend+' - Not on whatsapp\n')
             f.close()
             time.sleep(1)
-            w.get_screenshot_as_file(os.path.join(sys.path[0])+"\\ss\\"+tosend+"_fail.png")
+          #  w.get_screenshot_as_file(os.path.join(sys.path[0])+"\\ss\\"+tosend+"_fail.png")
             fail=fail+1
+            cmd = 'color 0c'  
+            os.system(cmd) 
             print('\n - - - Number '+tosend+' is not on WhatsApp, skipping - - - ')
+            cmd = 'color 0a'  
+            os.system(cmd) 
             count = count + 1
             
     else:
         #w.close()
-        
+        clear()
+        cmd = 'color 09'  
+        os.system(cmd) 
         print('\n - - - - - - - - - Report:  '+str(sent)+'/'+str(lines)+' successful - - - - - - - - ')
         exectime="%0.2f" % (time.time()-start,)
         ldtime="%0.2f" % loadtime
@@ -189,7 +239,7 @@ def send():
         print(' - - - - - - - -Total execution time: '+exectime+' s- - - - - - - -')
        #print('\n - - - - - - - - - - - - - Bye :) - - - - - - - - - - - - - ')
         w.quit()
-        if fail==1:
+        if fail!=0:
             os.startfile(log_path)
         print("\n - - - - - - WBMS - WhatsApp Bulk Message Sender - - - - - -")
         print(" - - - - - - - - - Github.com/AkshayCraZzY - - - - - - - - -")
