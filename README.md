@@ -151,5 +151,5 @@ Give a ⭐️ if this project helped you!
 
 # 📝 License
 
-Copyright © 2020 [Akshay Parakh](https://github.com/AkshayCraZzY).<br />
+Copyright © 2022 [Akshay Parakh](https://github.com/AkshayCraZzY).<br />
 This project is [Apache License 2.0](https://github.com/AkshayCraZzY/WhatsApp-Bulk-Message-Sender/blob/main/LICENSE) licensed.
