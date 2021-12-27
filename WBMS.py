@@ -247,7 +247,7 @@ def send():
         #w.close()
         w.quit()
         time.sleep(5)
-        ##############################clear()
+        clear()
         cmd = 'color 09'  
         os.system(cmd) 
         print('\n - - - - - - - - - Report:  '+str(sent)+'/'+str(lines)+' successful - - - - - - - - ')
@@ -274,7 +274,7 @@ def send():
             #os.startfile(log_path)
         print("\n - - - - - - WBMS - WhatsApp Bulk Message Sender - - - - - -")
         print(" - - - - - - - - - Github.com/AkshayCraZzY - - - - - - - - -")
-       # time.sleep(20)
+        time.sleep(20)
        # sys.exit()
 
 
