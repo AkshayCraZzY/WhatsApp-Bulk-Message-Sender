@@ -11,12 +11,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 import urllib.parse
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 cmd = 'mode 60,28'
 os.system(cmd)
-
 
 start = time.time()
 #scriptdir="M:\\WBMS\\"
@@ -32,7 +32,7 @@ options.add_argument('log-level=3')
 options.add_argument('disable-gpu')
 options.add_argument('disable-infobars')
 options.add_argument('disable-extensions')
-#options.add_argument('disable-dev-shm-usage')
+options.add_argument('disable-dev-shm-usage')
 #options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36")
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
@@ -146,7 +146,7 @@ def send():
             linkk=link1+tosend+link2+send_msg#+'%F0%9F%98%80'
         befload = time.time()
         w.get(linkk)
-        ###time.sleep(1)
+        time.sleep(2)
         try:
             w.find_element_by_class_name("_2UwZ_")#.click()
         except NoSuchElementException:
@@ -159,7 +159,11 @@ def send():
             os.system(cmd) 
         #print(" - - - - - - - - - -WhatsApp Web loaded - - - - - - - - - - ")
         search_xpath = '//div[@contenteditable="true"][@data-tab="3"]'
-        WebDriverWait(w, 30).until(EC.presence_of_element_located((By.XPATH, search_xpath)))
+        try:
+            WebDriverWait(w, 120).until(EC.presence_of_element_located((By.XPATH, search_xpath)))
+        except TimeoutException:
+            print("WhatsApp could'nt load in 2 minutes")
+            print(tosend)
         afload = time.time()
         totalload = afload-befload
         #print("%0.2f" % totalload)
@@ -179,13 +183,13 @@ def send():
         pr = "%0.2f" % loadtime
         print("Curr load: "+pr)
         '''
-        time.sleep(1)
+        time.sleep(2)
         try:
             #element = w.find_element_by_class_name("_2Nr6U").text
             w.find_element_by_class_name("IVxyB")
             w.find_element_by_class_name("_2Nr6U")
             #msg_box = WebDriverWait(w, 100).until(EC.presence_of_element_located((By.XPATH, msg_xpath)))
-        except:
+        except NoSuchElementException:
             msg_xpath = '//div[@contenteditable="true"][@data-tab="9"]'
             WebDriverWait(w, 30).until(EC.presence_of_element_located((By.XPATH, msg_xpath))).send_keys(Keys.ENTER)
            # msg_box.click()
@@ -228,6 +232,15 @@ def send():
 
             w.execute_script("window.close();")
             time.sleep(2)
+            
+            try:
+                WebDriverWait(w, 1).until(EC.alert_is_present())
+                alert = w.switch_to.alert
+                alert.accept()
+                print("alert accepted")
+            except TimeoutException:
+                print("no alert")
+
             count = count + 1
         else:
             f = open(log_path, "a")
