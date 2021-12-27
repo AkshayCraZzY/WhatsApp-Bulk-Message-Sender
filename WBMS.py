@@ -1,12 +1,9 @@
-#import pyperclip
-
 import time
 import sys
 import os
 import os.path
 import mmap
 import warnings
-import glob
 from selenium import webdriver
 from datetime import datetime
 from selenium.webdriver.common.by import By
@@ -29,8 +26,8 @@ img=[]
 clear = lambda: os.system('cls')
 
 options = webdriver.ChromeOptions() 
-options.add_argument("user-data-dir="+os.path.join(sys.path[0])+"\\wbms\\User Data") 
-options.add_argument("window-size=1080x720")
+options.add_argument("user-data-dir="+os.path.join(sys.path[0])+"/wbms/User Data") 
+#options.add_argument("window-size=1080x720")
 options.add_argument('log-level=3')
 options.add_argument('disable-gpu')
 options.add_argument('disable-infobars')
@@ -39,10 +36,10 @@ options.add_argument('disable-extensions')
 #options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36")
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-dir_path=os.path.join(sys.path[0])+"\\PUT EVERYTHING HERE\\"
+dir_path=os.path.join(sys.path[0])+"/PUT EVERYTHING HERE/"
 msg_path=dir_path+"msg.txt"
 num_path=dir_path+"num.txt"
-log_path=os.path.join(sys.path[0])+"\\failed.log"
+log_path=os.path.join(sys.path[0])+"/failed.log"
 img_path=dir_path+"Images"
 clear()
 
@@ -127,7 +124,8 @@ def send():
     count=0
     sent=0
     fail=0
-    loadtime=0
+    loadtime=00.00
+    looood = 0
     w = webdriver.Chrome(options=options)
     while (count < lines): 
         tosend = nums[count]
@@ -146,8 +144,9 @@ def send():
             continue
         else:
             linkk=link1+tosend+link2+send_msg#+'%F0%9F%98%80'
+        befload = time.time()
         w.get(linkk)
-        time.sleep(2)
+        ###time.sleep(1)
         try:
             w.find_element_by_class_name("_2UwZ_")#.click()
         except NoSuchElementException:
@@ -161,30 +160,51 @@ def send():
         #print(" - - - - - - - - - -WhatsApp Web loaded - - - - - - - - - - ")
         search_xpath = '//div[@contenteditable="true"][@data-tab="3"]'
         WebDriverWait(w, 30).until(EC.presence_of_element_located((By.XPATH, search_xpath)))
-        loadtime=loadtime+time.time()-start
-        time.sleep(2)
+        afload = time.time()
+        totalload = afload-befload
+        #print("%0.2f" % totalload)
+        looood = totalload+looood
+        #lod = "%0.2f" % looood
+        #print("LOAD: "+lod+"\n\n\n\n")
+        '''
+        now = time.time()
+        noww = "%0.2f" % now
+        print("NOW: "+noww)
+        pr1 = "%0.2f" % loadtime
+        print("prev load: "+pr1)
+        nss = now-start
+        ns = "%0.2f" % nss
+        print("Now-Start: "+ns)
+        loadtime = nss - loadtime
+        pr = "%0.2f" % loadtime
+        print("Curr load: "+pr)
+        '''
+        time.sleep(1)
         try:
-            w.find_element_by_class_name('nne8e')
+            #element = w.find_element_by_class_name("_2Nr6U").text
+            w.find_element_by_class_name("IVxyB")
+            w.find_element_by_class_name("_2Nr6U")
+            #msg_box = WebDriverWait(w, 100).until(EC.presence_of_element_located((By.XPATH, msg_xpath)))
         except:
             msg_xpath = '//div[@contenteditable="true"][@data-tab="9"]'
-            msg_box = WebDriverWait(w, 100).until(EC.presence_of_element_located((By.XPATH, msg_xpath)))
+            WebDriverWait(w, 30).until(EC.presence_of_element_located((By.XPATH, msg_xpath))).send_keys(Keys.ENTER)
            # msg_box.click()
            # pyperclip.copy(msg)
            # msg_box.send_keys(Keys.SHIFT, Keys.INSERT)
-            msg_box.send_keys(Keys.ENTER)
+           # msg_box.send_keys(Keys.ENTER)
             sent = sent + 1
           #  w.get_screenshot_as_file(os.path.join(sys.path[0])+"\\ss\\"+tosend+"_msg.png")
             #print('\n - - - - - ['+str(sent)+'] - - - - Message sent to '+tosend+' - - - - - ')
             print('\n - - - - - - - - - Message sent to '+tosend+' - - - - - ['+str(sent)+']')
             for imgs in img:
                 #print(imgs)
-                tosend_img=img_path+'\\'+imgs
+                tosend_img=img_path+'/'+imgs
                 #print(tosend_img)
                 #sys.exit()
                 attach_xpath='//div[@title="Attach"]'
-                attach_btn = WebDriverWait(w, 2000).until(EC.presence_of_element_located((By.XPATH, attach_xpath)))
+                WebDriverWait(w, 10).until(EC.presence_of_element_located((By.XPATH, attach_xpath))).click()
                 #print("Attach Found")
-                attach_btn.click()
+                #attach_btn.click()
                 time.sleep(1)
                 doc_xpath = '//span[@data-icon="attach-document"]'
                 img_xpath = '//span[@data-icon="attach-image"]'
@@ -193,13 +213,14 @@ def send():
                 #print("Doc Found")
                 #doc_btn.click()
                 #self.send_attachment()
-                img_btn = WebDriverWait(w, 2000).until(EC.presence_of_element_located((By.XPATH, img_xpath)))
+                WebDriverWait(w, 10).until(EC.presence_of_element_located((By.XPATH, img_xpath)))
                 #img_btn = w.find_element_by_xpath('//*[@id="main"]/header/div[3]/div/div[2]/span/div/div/ul/li[1]')
                 #img_btn.click()
-                img_btn = w.find_element_by_tag_name('input')
-                img_btn.send_keys(tosend_img)
-                send_btn = WebDriverWait(w, 2000).until(EC.presence_of_element_located((By.XPATH, send_xpath)))
-                send_btn.click()
+                w.find_element_by_tag_name('input').send_keys(tosend_img)
+               # img_btn = w.find_element_by_tag_name('input')
+              #  img_btn.send_keys(tosend_img)
+                WebDriverWait(w, 10).until(EC.presence_of_element_located((By.XPATH, send_xpath))).click()
+                #send_btn.click()
                 print(' - - - - - - - - - Image sent '+imgs+' - - - - - - - - - -')
                # if imgs == img[-1]:
                   #  w.get_screenshot_as_file(os.path.join(sys.path[0])+"\\ss\\"+tosend+"_img.png")
@@ -224,13 +245,23 @@ def send():
             
     else:
         #w.close()
-        clear()
+        w.quit()
+        time.sleep(5)
+        ##############################clear()
         cmd = 'color 09'  
         os.system(cmd) 
         print('\n - - - - - - - - - Report:  '+str(sent)+'/'+str(lines)+' successful - - - - - - - - ')
-        exectime="%0.2f" % (time.time()-start,)
-        ldtime="%0.2f" % loadtime
-        actual_exec=(time.time()-start)-loadtime
+        exect = time.time()-start
+        
+        '''
+        timee=time.time()-start
+        timeee = "%0.2f" % timee
+        print(timeee)
+        '''
+        actual_exec=exect-looood
+
+        exectime="%0.2f" % exect
+        ldtime="%0.2f" % looood
         act_exec = "%0.2f" % actual_exec
         #print(' - - - - - - - Task finished in '+exectime+' seconds - - - - - - - ')
         print(' - - - - - - - -WhatsApp Web load time: '+ldtime+' s- - - - - - - ')
@@ -238,13 +269,13 @@ def send():
         print(' - - - - - - - -Actual execution time: '+act_exec+' s- - - - - - - -')
         print(' - - - - - - - -Total execution time: '+exectime+' s- - - - - - - -')
        #print('\n - - - - - - - - - - - - - Bye :) - - - - - - - - - - - - - ')
-        w.quit()
-        if fail!=0:
-            os.startfile(log_path)
+        
+        #if fail!=0:
+            #os.startfile(log_path)
         print("\n - - - - - - WBMS - WhatsApp Bulk Message Sender - - - - - -")
         print(" - - - - - - - - - Github.com/AkshayCraZzY - - - - - - - - -")
-        time.sleep(10)
-        sys.exit()
+       # time.sleep(20)
+       # sys.exit()
 
 
 send()
