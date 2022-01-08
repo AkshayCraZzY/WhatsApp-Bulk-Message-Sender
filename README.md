@@ -3,7 +3,7 @@
  <img width="250px" src="https://i.imgur.com/555Zl4p.png" align="center" alt="MargAuto" /></a>
  <h3 align="center"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="https://c.tenor.com/3MtdCRIPZUMAAAAi/whatsapp.gif" width="20px"></a> WhatsApp Bulk Message Sender - WBMS</h3></a>
 </p>
-```sh
+
 $$\      $$\ $$\                  $$\
 $$ | $\  $$ |$$ |                 $$ |
 $$ |$$$\ $$ |$$$$$$$\   $$$$$$\ $$$$$$\    $$$$$$$\  $$$$$$\   $$$$$$\   $$$$$$\
@@ -15,7 +15,6 @@ $$  /   \$$ |$$ |  $$ |\$$$$$$$ | \$$$$  |$$$$$$$  |\$$$$$$$ |$$$$$$$  |$$$$$$$ 
                                                               $$ |      $$ |
                                                               $$ |      $$ |
                                                               \__|      \__|
-                                                              
                                                               
 <h3 align="center">WBMS automates sending of message to multiple numbers via WhatsApp Web. <br/> </h3>
 <br/>
