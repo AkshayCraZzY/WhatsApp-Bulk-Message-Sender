@@ -15,7 +15,6 @@ $$  /   \$$ |$$ |  $$ |\$$$$$$$ | \$$$$  |$$$$$$$  |\$$$$$$$ |$$$$$$$  |$$$$$$$ 
                                                               $$ |      $$ |
                                                               $$ |      $$ |
                                                               \__|      \__|
- ```
                                                               
                                                               
 <h3 align="center">WBMS automates sending of message to multiple numbers via WhatsApp Web. <br/> </h3>
