@@ -1,3 +1,12 @@
+'''
+-------------------------------------------
+Author : Akshay Prafull Parakh
+LinkedIn : https://www.linkedin.com/in/akshayparakh98
+Github : https://github.com/AkshayCraZzY
+Instagram : https://www.instagram.com/akki_parakh
+--------------------------------------------
+'''
+
 import time
 import sys
 import os
