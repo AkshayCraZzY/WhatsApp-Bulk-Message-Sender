@@ -64,28 +64,9 @@ $$  /   \$$ |$$ |  $$ |\$$$$$$$ | \$$$$  |$$$$$$$  |\$$$$$$$ |$$$$$$$  |$$$$$$$ 
 
 # 🚀 Installation :
 
-## Install Selenium 
+## Install Selenium and chromedriver
+ > For installtion of selenium + chromedriver Click [HERE](https://github.com/AkshayCraZzY/WhatsApp-Bulk-Message-Sender/blob/main/selenium-chromedriver-setup.md))
  
-  Using [pip](https://pypi.org/project/selenium/)
-  ```
-  pip install selenium
-  ```
-
-## Download and setup Chrome Webdriver
- 
-For checking chrome version :
-```
-chrome://version
-```
-
-- Download according to your chrome version from [HERE](https://sites.google.com/chromium.org/driver/downloads?authuser=0)
- 
- - Add ChromeDriver to your PATH (System variable)  [HERE](https://zwbetz.com/download-chromedriver-binary-and-add-to-your-path-for-automated-functional-testing/#windows-gui)
-
-To verify chromedriver installation run on CMD : 
-```
-chromedriver.exe -v
-```
 ## Changes in the Code
 In a new folder, place ```main.py``` and create ```num.txt```, ```msg.txt``` <br/>
 Find this line and replace with path of your newly created folder.<br/>
